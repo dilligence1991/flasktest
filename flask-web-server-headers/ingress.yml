@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: the-ingress 
+  namespace: default
+spec:
+  rules:
+    - host: test.flask.cn 
+      http:
+        paths:
+          - backend:
+              serviceName: the-service 
+              servicePort: 8080 
+            path: /
+
