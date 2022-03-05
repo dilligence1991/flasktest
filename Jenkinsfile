@@ -4,7 +4,7 @@ node {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
         def docker_img_name="annaliyx/flask-project"
     }
-   try{
+   //try{
         stage('Clone') {
            
                 //clone source code
@@ -14,16 +14,16 @@ node {
         stage ('Scantist') {
 2           
                  //scan code
-3                sh '''
+3                sh """
 4                    cd ${WORKSPACE}
 5                    java -jar scantist-bom-detect.jar
-6                '''
+6                """
 7            
 8        }
         stage('Build') {
             
                 
-                sh 'sudo docker build -t ${docker_img_name}:latest .'
+                sh """sudo docker build -t ${docker_img_name}:latest ."""
             
         }
         stage('Docker Build') {
@@ -43,9 +43,9 @@ node {
                 //sh 'docker push ${docker_img_name}:latest'
             
         }
-    }catch(err) {
-       always {
-         echo 'end'
-       }
-    }
+    //}catch(err) {
+     //  always {
+     //    echo 'end'
+     //  }
+    //}
 }
