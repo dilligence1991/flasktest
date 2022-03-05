@@ -12,7 +12,7 @@ pipeline{
             }
         }
         stage ('Scantist') {
-2            steps {
+2            steps{
                  //scan code
 3                sh '''
 4                    curl -s https://download.scantist.io/scantist-bom-detect.jar --output scantist-bom-detect.jar
