@@ -12,18 +12,14 @@ node {
            
         }
         stage ('Scantist') {
-2           
+           
                  //scan code
-3                sh """
-4                    cd ${WORKSPACE}
-5                    java -jar scantist-bom-detect.jar
-6                """
-7            
-8        }
+                 sh ' cd ${WORKSPACE} && pwd && java -jar scantist-bom-detect.jar '
+        }
         stage('Build') {
             
                 
-                sh """sudo docker build -t ${docker_img_name}:latest ."""
+                sh 'sudo docker build -t ${docker_img_name}:latest .'
             
         }
         stage('Docker Build') {
