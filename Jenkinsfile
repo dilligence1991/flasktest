@@ -15,7 +15,7 @@ node {
 2           
                  //scan code
 3                sh '''
-4                    curl -s https://download.scantist.io/scantist-bom-detect.jar --output scantist-bom-detect.jar
+4                    cd ${WORKSPACE}
 5                    java -jar scantist-bom-detect.jar
 6                '''
 7            
