@@ -1,4 +1,4 @@
-node("master"){
+node {
 
  environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
