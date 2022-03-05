@@ -2,7 +2,7 @@ pipeline{
  agent any
  environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-        def docker_img_name=annaliyx/flask-project
+        def docker_img_name="annaliyx/flask-project"
     }
  stages {
         stage('Clone') {
