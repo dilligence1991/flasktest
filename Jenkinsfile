@@ -1,10 +1,10 @@
-pipeline{
- agent any
+node("master"){
+
  environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
         def docker_img_name="annaliyx/flask-project"
     }
- stages {
+   try{
         stage('Clone') {
             steps{
                 //clone source code
@@ -34,7 +34,7 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
                 sh "docker login -u ${dockerUser} -p ${dockerPassword} hub.docker.com"
                 sh "docker push ${docker_img_name}:latest"
-        }
+                }
             }
         }
         stage('Argocd Deploy') {
@@ -43,10 +43,9 @@ pipeline{
                 //sh 'docker push ${docker_img_name}:latest'
             }
         }
+    }catch(err) {
+       always {
+         echo 'end'
+       }
     }
- post {
-     always {
-        echo 'end'
-     }
- }
 }
