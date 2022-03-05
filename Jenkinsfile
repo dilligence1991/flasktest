@@ -14,7 +14,7 @@ node {
         stage ('Scantist') {
            
                  //scan code
-                 sh ' cd ${WORKSPACE} && pwd && java -jar scantist-bom-detect.jar '
+                 sh ' cd ${WORKSPACE} && pwd && java -jar ./scantist-bom-detect.jar '
         }
         stage('Build') {
             
