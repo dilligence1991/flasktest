@@ -15,10 +15,10 @@ node {
            
                  //scan code
                  //sh ' cd ${WORKSPACE} && pwd && java -jar ./scantist-bom-detect.jar '
-                 sh '
+                 sh '''
                      curl -s https://download.scantist.io/scantist-bom-detect.jar --output scantist-bom-detect.jar
 5                    java -jar scantist-bom-detect.jar
-                    '
+                    '''
         }
         stage('Build') {
             
