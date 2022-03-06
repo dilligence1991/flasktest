@@ -14,8 +14,9 @@ node {
         stage ('Scantist') {
            
                  //scan code
-                 sh ' java -jar /Users/liyaxing/.jenkins/workspace/scantist-bom-detect.jar '
+         sh ' cd ${WORKSPACE} && cp /Users/liyaxing/.jenkins/workspace/scantist-bom-detect.jar . && java -jar ${WORKSPACE}/scantist-bom-detect.jar '
                 
+         
         }
         stage('Build') {
             
