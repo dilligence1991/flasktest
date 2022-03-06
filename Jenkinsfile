@@ -2,7 +2,7 @@ node {
 
  environment {
         DOCKERHUB_CREDENTIALS=credentials('dockerhub')
-        def docker_img_name="annaliyx/flask-project"
+        //def docker_img_name="annaliyx/flask-project"
     }
    //try{
         stage('Clone') {
@@ -21,7 +21,7 @@ node {
         stage('Docker Build') {
             
                 //create and deploy image to docker hub
-                
+                def docker_img_name="flask-project"
                  sh ' docker build -t ${docker_img_name} . ' 
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
                  
