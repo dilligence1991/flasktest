@@ -14,11 +14,8 @@ node {
         stage ('Scantist') {
            
                  //scan code
-                 sh ' cd ${WORKSPACE} && ls && java -jar ./scantist-bom-detect.jar '
-                // sh '''
-                //     curl -s https://download.scantist.io/scantist-bom-detect.jar --output scantist-bom-detect.jar
-                //     java -jar scantist-bom-detect.jar
-                //    '''
+                 sh ' java -jar /Users/liyaxing/.jenkins/workspace/scantist-bom-detect.jar '
+                
         }
         stage('Build') {
             
