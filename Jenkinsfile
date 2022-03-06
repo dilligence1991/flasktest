@@ -22,11 +22,11 @@ node {
             
                 //create and deploy image to docker hub
                 
-                
+                 sh ' docker build -t ${docker_img_name}:${env.BUILD_NUMBER} . ' 
                 withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerPassword', usernameVariable: 'dockerUser')]) {
                  
                  sh ' docker login -u ${dockerUser} -p ${dockerPassword} hub.docker.com '
-                 sh ' sudo docker build -t ${docker_img_name}:${env.BUILD_NUMBER} . ' 
+                
                  sh ' docker tag ${docker_img_name}:${env.BUILD_NUMBER} ${docker_img_name}:latest '
                  sh ' docker push ${docker_img_name}:latest '
                 }
