@@ -21,7 +21,7 @@ node {
    
 
     stage('Push image') {
-        export PATH="$PATH:/usr/local/bin"
+        sh ' export PATH="$PATH:/usr/local/bin" '
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
         }
